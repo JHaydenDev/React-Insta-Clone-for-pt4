@@ -9,7 +9,7 @@ const Search = styled.input`
 class CommentSection extends Component {
     render() {
       return (
-        <div>This is the comment section!</div>
+        <div>This is the comment section!!!</div>
       );
     }
   }
