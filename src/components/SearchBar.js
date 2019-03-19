@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 //styling
 const Search = styled.input`
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto;
+  border: 1px solid black;
+  width: 90%;
+
 `;
 // component
 

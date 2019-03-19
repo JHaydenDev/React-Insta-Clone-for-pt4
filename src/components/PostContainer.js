@@ -4,16 +4,31 @@ import CommentSection from "./CommentSection";
 import dummyData from "../dummy-data";
 
 //styling
-const Search = styled.input``;
+const PostsBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10% auto;
+  border: 1px solid black;
+  width: 90%;
+`;
+const PostWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto;
+  border: 1px solid black;
+  width: 90%;
+
+`;
+
 
 // container component
 const PostContainer = props => {
   return (
-    <div>
+    <PostsBox>
       {props.posts.map(p => (
         <Posts key={p.imageUrl} post={p} />
       ))}
-    </div>
+    </PostsBox>
   );
 };
 
@@ -32,7 +47,7 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="post">
+      <PostWrapper>
         <div className="post-header">
           <div className="thumb-wrapper">
             <img
@@ -57,7 +72,7 @@ class Posts extends Component {
           </div>
         </div>
         <CommentSection comments={this.props.post.comments} />
-      </div>
+      </PostWrapper>
     );
   }
 }

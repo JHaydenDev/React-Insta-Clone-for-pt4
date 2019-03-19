@@ -4,6 +4,16 @@ import dummyData from "./dummy-data";
 import SearchBar from "./components/SearchBar";
 import PostContainer from "./components/PostContainer";
 
+//styling
+const AppContainer = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+  justify-content: space-around;
+`;
+
+//App
 class App extends Component {
   constructor() {
     super();
@@ -19,10 +29,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <AppContainer>
         <SearchBar />
         <PostContainer posts={this.state.post} user={this.props.user} />
-      </div>
+      </AppContainer>
     );
   }
 }
