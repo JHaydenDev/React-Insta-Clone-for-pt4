@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import dummyData from "./dummy-data";
-import SearchBar from "./components/SearchBar";
-import PostContainer from "./components/PostContainer/PostContainer";
+import Authenticate from "./components/Authentication/Authentication";
+import Login from "./components/Authentication/Login";
+
 
 //styling
 const AppContainer = styled.div`
@@ -13,26 +13,19 @@ const AppContainer = styled.div`
   justify-content: space-around;
 `;
 
-//App
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      post: [dummyData]
-    };
-  }
-  componentDidMount() {
-    this.setState({ post: dummyData })
+  constructor() {
+    super();
+    this.state = {};
   }
 
   render() {
     return (
-      <AppContainer>
-        <SearchBar />
-        <PostContainer posts={this.state.post} />
+      <AppContainer className="App">
+        <Login />
       </AppContainer>
     );
   }
 }
 
-export default App;
+export default Authenticate(App);

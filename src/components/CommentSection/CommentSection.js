@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const CommentBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10% auto;
+  margin: 2% auto;
   border: 1px solid black;
   width: 90%;
 `;
@@ -14,7 +14,7 @@ const CommentBox = styled.div`
 const ActualComment = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10% auto;
+  margin: 2% auto;
   border: 1px solid black;
   width: 90%;
 `;
@@ -37,10 +37,10 @@ const CommentInput = props => {
 
 const Comment = props => {
   return (
-    <div className="comment-text">
-      <span className="comment">{props.comment.text}</span>{" "}
-      <span className="user">-{props.comment.username}</span>
-    </div>
+    <CommentBox className="comment-text">
+      <ActualComment className="comment">{props.comment.text}</ActualComment>{" "}
+      <ActualComment className="user">-{props.comment.username}</ActualComment>
+    </CommentBox>
   );
 };
 

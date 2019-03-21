@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import styled from "styled-components";
+
 
 //styling
 const Search = styled.input`
@@ -8,17 +9,31 @@ const Search = styled.input`
   margin: 5% auto;
   border: 1px solid black;
   width: 90%;
-
 `;
-// component
+//Search Handler
 
-class SearchBar extends Component {
-    render() {
-      return (
-        <Search type="text" className="input" placeholder="Search..."/>
-      );
-    }
+class SearchBar extends React.Component {
+  state = { search: "" };
+
+  submitSearch = event => {
+    console.log("on submit");
+    event.preventDefault();
+    this.props.searchHandler(this.state.search);
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.submitSearch}>
+        <Search
+          className="search"
+          type="text"
+          value={this.state.search}
+          placeholder="Search"
+          onChange={e => this.setState({ search: e.target.value })}
+        />
+      </form>
+    );
   }
-  
-  export default SearchBar;
-  
+}
+
+export default SearchBar;
