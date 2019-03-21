@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import dummyData from "./dummy-data";
 import SearchBar from "./components/SearchBar";
-import PostContainer from "./components/PostContainer";
+import PostContainer from "./components/PostContainer/PostContainer";
 
 //styling
 const AppContainer = styled.div`
@@ -15,23 +15,21 @@ const AppContainer = styled.div`
 
 //App
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       post: [dummyData]
     };
   }
   componentDidMount() {
-    this.setState({
-      post: dummyData
-    });
+    this.setState({ post: dummyData })
   }
 
   render() {
     return (
       <AppContainer>
         <SearchBar />
-        <PostContainer posts={this.state.post} user={this.props.user} />
+        <PostContainer posts={this.state.post} />
       </AppContainer>
     );
   }

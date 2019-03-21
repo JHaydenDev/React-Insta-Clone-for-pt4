@@ -1,45 +1,43 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import CommentSection from "./CommentSection";
-import dummyData from "../dummy-data";
+import CommentSection from "../CommentSection/CommentSection";
+import dummyData from "../../dummy-data";
 
 //styling
-const PostsBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 10% auto;
-  border: 1px solid black;
-  width: 90%;
-`;
+
 const PostWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5% auto;
   border: 1px solid black;
   width: 90%;
-
+  padding: 2%;
 `;
 
+const LikeBar = styled.div`
+  display: flex;
+`;
 
-// container component
-const PostContainer = props => {
-  return (
-    <PostsBox>
-      {props.posts.map(p => (
-        <Posts key={p.imageUrl} post={p} />
-      ))}
-    </PostsBox>
-  );
-};
+const Likes = styled.div`
+  padding: 1%;
+`;
+const Heart = styled.div`
+  padding: 1%;
+`;
+
+const CommentSymbol = styled.div`
+  padding: 1%;
+`;
 
 // posts component
-class Posts extends Component {
+class Posts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      likes: props.post.likes
+    };
   }
 
-  //Likes functionality
   incrementLikes = () => {
     let likes = this.state.likes + 1;
     this.setState({ likes });
@@ -62,13 +60,11 @@ class Posts extends Component {
         <div>
           <img className="post-image" src={this.props.post.imageUrl} alt="" />
           <div className="comment-bottom">
-            <div className="like-bar">
-              <p className="likes">{this.state.likes} likes</p>
-              <p className="heart-emoji" onClick={this.incrementLikes}>
-                ♡{" "}
-              </p>
-              <p>💬</p>
-            </div>
+            <LikeBar>
+              <Likes>{this.state.likes} likes</Likes>
+              <Heart onClick={this.incrementLikes}>♡{""}</Heart>
+              <CommentSymbol>💬</CommentSymbol>
+            </LikeBar>
           </div>
         </div>
         <CommentSection comments={this.props.post.comments} />
@@ -77,4 +73,4 @@ class Posts extends Component {
   }
 }
 
-export default PostContainer;
+export default Posts;
